@@ -25,8 +25,16 @@ with sqlite3.connect('person.db') as conn:
     #   ("Алиев", "Денис", 103), ("Мамытова", "Арина", 103), ("Астарков", "Марат", 103)
     #   ''')
 
-    cursor.execute('''SELECT Employee.FirstName, Employee.LastName, Departments.DepartmentName FROM Employee JOIN Departments ON Departments.DepartmentId = Employee.DepartmentID
+    cursor.execute('''SELECT Employee.FirstName, Employee.LastName, Departments.DepartmentName
+    FROM Employee JOIN Departments ON Departments.DepartmentId = Employee.DepartmentID
     ''')
     for row in cursor.fetchall():
         print(row)
 
+    print()
+
+    cursor.execute('''SELECT Employee.FirstName, Employee.LastName, Departments.DepartmentName
+    FROM Employee JOIN Departments ON Departments.DepartmentID = Employee.DepartmentID 
+    WHERE Departments.DepartmentId = 102''')
+    for row in cursor.fetchall():
+        print(row)
