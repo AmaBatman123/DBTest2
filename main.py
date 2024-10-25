@@ -15,13 +15,18 @@ with sqlite3.connect('person.db') as conn:
     DepartmentName TEXT
     )''')
 
-    cursor.execute('''INSERT INTO Departments(DepartmentID, DepartmentName) 
-    VALUES (101, "HR"), (102, "IT"), (103, "Sales")
-    ''')
+    # cursor.execute('''INSERT INTO Departments(DepartmentID, DepartmentName)
+    # VALUES (101, "HR"), (102, "IT"), (103, "Sales")
+    # ''')
+    #
+    # cursor.execute('''INSERT INTO Employee(FirstName, LastName, DepartmentID)
+    # VALUES ("Замиров", "Камиль", 101), ("Аманов", "Рустам", 101),
+    #  ("Вашин", "Антон", 102), ("Пургов", "Марат", 102),
+    #   ("Алиев", "Денис", 103), ("Мамытова", "Арина", 103), ("Астарков", "Марат", 103)
+    #   ''')
 
-    cursor.execute('''INSERT INTO Employee(FirstName, LastName, DepartmentID)
-    VALUES ("Замиров", "Камиль", 1), ("Аманов", "Рустам", 1),
-     ("Вашин", "Антон", 2), ("Пургов", "Марат", 2),
-      ("Алиев", "Денис", 3), ("Мамытова", "Арина", 3), ("Астарков", "Марат", 3)
-      ''')
+    cursor.execute('''SELECT Employee.FirstName, Employee.LastName, Departments.DepartmentName FROM Employee JOIN Departments ON Departments.DepartmentId = Employee.DepartmentID
+    ''')
+    for row in cursor.fetchall():
+        print(row)
 
