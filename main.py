@@ -10,3 +10,7 @@ with sqlite3.connect('person.db') as conn:
     DepartmentName TEXT
     )''')
 
+    cursor.execute('''CREATE TABLE IF NOT EXISTS Departments(
+    DepartmentID INTEGER PRIMARY KEY AUTOINCREMENT,
+    DepartmentName TEXT
+    )''')
